@@ -2,35 +2,46 @@
     display: none;
 }
 
+.container-fluid {
+    background-color: #333333;
+    height: 100vh;
+    color: white;
+}
+
 /* Hide the browser's default radio button */
-/* input {
+input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-  } */
+  }
 
 label {
     margin-top: 10%;
+    padding: 5% 0;
+    height: 60px;
     width: 100%;
     background-color: #007f00a6;
-    padding-left: 10px;
     font-size: 20px;
     border-radius: 5px;
     border-style: solid;
     border-color: #007f00ea;
+    letter-spacing: 2px;
 }
 
 .submitButton {
     /* background-color: green; */
-    bottom: 1%;
+    bottom: 5%;
     width: 100%;
-    position: fixed;
+    position: absolute;
 }
 
 button {
     margin-top: 15px;
     margin-bottom: 15px;
     height: 100px;
-    width: 150px;
-    border-radius: 25px;
+    width: 100px;
+    border-radius: 50%!important;
+    background-color: cornflowerblue;
+    
 }
+

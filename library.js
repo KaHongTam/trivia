@@ -51,7 +51,7 @@ function checkAnswer() {
     $("#submitButton").hide();
     $("#nextQuestionButton").show();
     if (i + 1 == questionData.results.length) {
-      // window.open("https://www.google.nl","_self");
+      window.open("score.html","_self");
       $("#nextQuestionButton").hide();
       $("#scoreBoardButton").show();
     }
