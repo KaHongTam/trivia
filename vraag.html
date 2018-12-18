@@ -12,23 +12,52 @@
 	
     <body>
         <div class="container-fluid">
-            <div class="row">
-                <h1><div id = "question">Question</div></h1>
+            <div class="row text-right">
+                <div class="col-12">
+                    Question&nbsp;<span id="currentQuestionNumber"></span>&nbsp;of&nbsp;<span id="totalQuestionNumber"></span>
+                </div>
             </div>
-            <div class="row">
-                <form autocomplete="off">
-                    <input type="radio" id="checker1" name="answer" onclick="displayAnswer(this.value)" value="True">True<br>
-                    <input type="radio" id="checker2" name="answer" onclick="displayAnswer(this.value)" value="False">False<br>
-                </form> 
+            <div class="row text-center">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <h4><div id="question">Question</div></h4>
+                </div>
             </div>
-            <div class="row">
-                <p>So, your answer is: <span id="result"></span>?</p>
+            <div class="row radiobuttons">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <form autocomplete="off">
+                        <div>
+                            <label for="checker1">
+                            <input type="radio" id="checker1" name="answer" onclick="displayAnswer(this.value)" value="True">
+                            True</label>
+                        </div>
+                        <div>
+                            <label for="checker2" style="background-color: #ff0000a6; border-color: #ff0000ea">
+                            <input type="radio" id="checker2" name="answer" onclick="displayAnswer(this.value)" value="False">
+                            False</label>
+                        </div>
+                    </form> 
+                </div>
             </div>
-            <div class="row">
-                <button type="button" onclick="checkAnswer()" id="submitButton">Submit</button>
+            <div class="row text-center">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <h5 id="finalAnswer">So, <span id="result"></span> is your final answer?</h5>
+                    <h5 id="noAnswer">No answer has been given, answer the question!</h5>
+                </div>
             </div>
-            <div class="row">
-                <p id="showAnswer"></p>
+            <div class="row submitButton">
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="checkAnswer()" id="submitButton">Submit</button>
+                    <button type="button" class="btn btn-primary btn-lg"onclick="nextQuestion()" id="nextQuestionButton">Next!</button>
+                    <button type="button" class="btn btn-primary btn-lg"onclick="nextQuestion()" id="scoreBoardButton">Score!</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-12">
+                    <p id="showAnswer"></p>
+                </div>
             </div>
             <div class="row">
                 <div id = "correctAnswer"></div>
@@ -42,13 +71,12 @@
     <script src="library.js"></script>
     </html>
     
-    
-    
-    
-    <!-- HTML
-
-<p>Gender</p>
-<input type="radio" id="gender0" name="gender" value="Male">Male<br>
-<input type="radio" id="gender1" name="gender" value="Female">Female<br> -->
-
-
+    <!-- <div>
+            <input type="radio" name="radio" id="radio1" class="radio" checked/>
+            <label for="radio1">First Option</label>
+            </div>
+            
+            <div>
+            <input type="radio" name="radio" id="radio2" class="radio"/>
+            <label for="radio2">Second Option</label>
+            </div> -->

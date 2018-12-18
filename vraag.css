@@ -1,3 +1,36 @@
-#correctAnswer {
+#correctAnswer, #scoreBoardButton, #nextQuestionButton, #finalAnswer, #noAnswer {
     display: none;
+}
+
+/* Hide the browser's default radio button */
+/* input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  } */
+
+label {
+    margin-top: 10%;
+    width: 100%;
+    background-color: #007f00a6;
+    padding-left: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #007f00ea;
+}
+
+.submitButton {
+    /* background-color: green; */
+    bottom: 1%;
+    width: 100%;
+    position: fixed;
+}
+
+button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 100px;
+    width: 150px;
+    border-radius: 25px;
 }
