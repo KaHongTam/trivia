@@ -1,0 +1,14 @@
+.start_quiz {
+    background-color: green;
+    bottom: 10%;
+    width: 100%;
+    position: fixed;
+}
+
+.start_button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 100px;
+    width: 150px;
+    border-radius: 25px;
+}
