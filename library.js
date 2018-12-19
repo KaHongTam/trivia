@@ -1,6 +1,7 @@
 var questionData;
+var score = 0;
 
-fetch('https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=boolean')
+fetch('https://opentdb.com/api.php?amount=10&category=18&type=boolean')
   .then(
     function(response) {
       if (response.status !== 200) {
@@ -19,6 +20,7 @@ fetch('https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=b
         document.getElementById("correctAnswer").innerHTML = data.results[i].correct_answer;
         question = document.getElementById("question").innerHTML;
         correct_answer = data.results[i].correct_answer;
+        localStorage.setItem('jsCookieTotal', data.results.length);
       });
     }
   )
@@ -42,15 +44,17 @@ function checkAnswer() {
     var checker = document.getElementById("result").innerHTML;
     $("#showAnswer").show();
     if (checker == document.getElementById("correctAnswer").innerHTML) {
-        document.getElementById("showAnswer").innerHTML = "You answered correctly, congratulations!";
+      score++;
+      document.getElementById("showAnswer").innerHTML = "You answered correctly, congratulations!";
     }
     else {
-        document.getElementById("showAnswer").innerHTML = "Alas, this is the wrong answer, try again!";
+      document.getElementById("showAnswer").innerHTML = "Alas, this is the wrong answer, try again!";
     }
     $("input[type=radio]").attr('disabled', true);
     $("#submitButton").hide();
     $("#nextQuestionButton").show();
     if (i + 1 == questionData.results.length) {
+      localStorage.setItem('jsCookieScore', score);
       window.open("score.html","_self");
       $("#nextQuestionButton").hide();
       $("#scoreBoardButton").show();
@@ -70,6 +74,15 @@ function nextQuestion() {
     document.getElementById("checker1").checked = false;
     document.getElementById("checker2").checked = false;
     $("input[type=radio]").attr('disabled', false);
-    
-  console.log ("i=", i , "totaal aantal vragen=",  questionData.results.length);
+  }
+
+function scorePage() {
+  var displayScore = localStorage.getItem('jsCookieScore');
+  var totalQuestions = localStorage.getItem('jsCookieTotal');
+  var percentageScore = (displayScore/totalQuestions)*100;
+  console.log("displayScore = ", displayScore);
+  console.log("total amount of questions = ", totalQuestions);
+  document.getElementById("score").innerHTML = displayScore;
+  document.getElementById("totalQuestions").innerHTML = totalQuestions;
+  document.getElementById("percentage").innerHTML = percentageScore;
 }
