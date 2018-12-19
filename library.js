@@ -13,7 +13,7 @@ function generateQuiz(){
   questionDifficulty = localStorage.getItem('jsCookieDifficulty');
   console.log("Totaal aantal vragen: " + localStorage.getItem('jsCookieTotal'));
   console.log("Moeilijkheid: " + localStorage.getItem('jsCookieDifficulty'));
-  fetch('https://opentdb.com/api.php?amount=' + questionAmount + '&category=18&type=boolean')
+  fetch('https://opentdb.com/api.php?amount=' + questionAmount + '&difficulty=' + questionDifficulty + '&type=boolean')
     .then(
       function(response) {
         if (response.status !== 200) {
@@ -68,7 +68,6 @@ function checkAnswer() {
     $("#nextQuestionButton").show();
     if (i + 1 == questionData.results.length) {
       localStorage.setItem('jsCookieScore', score);
-      window.open("score.html","_self");
       $("#nextQuestionButton").hide();
       $("#scoreBoardButton").show();
     }
@@ -99,4 +98,8 @@ function scorePage() {
   document.getElementById("score").innerHTML = displayScore;
   document.getElementById("totalQuestions").innerHTML = totalQuestions;
   document.getElementById("percentage").innerHTML = percentageScore;
+}
+
+function openScoreBoard() {
+  window.open("score.html","_self");
 }
