@@ -9,6 +9,20 @@
     <script src="main.js"></script>
 </head>
 <body>
-<div id="octagon"></div>
-</body>
+
+        <p>A script on this page starts this clock:</p>
+        
+        <p id="demo"></p>
+        
+        <script>
+        var myVar = setInterval(myTimer, 1000);
+        i = 0;
+
+        function myTimer() {
+            i++;
+            document.getElementById("demo").innerHTML = i;
+        }
+        </script>
+        
+        </body>
 </html>

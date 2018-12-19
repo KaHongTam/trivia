@@ -39,6 +39,14 @@ function generateQuiz(){
     .catch(function(err) {
       console.log('Fetch Error :-S', err);
     });
+
+    var myVar = setInterval(myTimer, 100);
+    timer = 0;
+
+    function myTimer() {
+        timer = timer + 0.1;
+        console.log (timer);
+    }
   }
 
 function displayAnswer(answer) {
@@ -67,9 +75,13 @@ function checkAnswer() {
     $("#submitButton").hide();
     $("#nextQuestionButton").show();
     if (i + 1 == questionData.results.length) {
-      localStorage.setItem('jsCookieScore', score);
       $("#nextQuestionButton").hide();
       $("#scoreBoardButton").show();
+      clearInterval(timer);
+      endTime = timer.toFixed(1);
+      localStorage.setItem('jsCookieScore', score);
+      localStorage.setItem('jsCookieTimer', endTime);
+      console.log("total time used=" + endTime);
     }
   }
 }
@@ -92,12 +104,14 @@ function nextQuestion() {
 function scorePage() {
   var displayScore = localStorage.getItem('jsCookieScore');
   var totalQuestions = localStorage.getItem('jsCookieTotal');
+  var totalTime = localStorage.getItem('jsCookieTimer');
   percentageScore = (displayScore/totalQuestions)*100;
   console.log("displayScore = ", displayScore);
   console.log("total amount of questions = ", totalQuestions);
   document.getElementById("score").innerHTML = displayScore;
   document.getElementById("totalQuestions").innerHTML = totalQuestions;
   document.getElementById("percentage").innerHTML = percentageScore;
+  document.getElementById("timeUsed").innerHTML = totalTime;
   displayQuote(percentageScore);
 }
 
