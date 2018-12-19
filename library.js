@@ -64,6 +64,7 @@ function checkAnswer() {
 
 function nextQuestion() {
     i++;
+    document.title = "TriviKa | Question " + (i + 1) + " out of 10";
     document.getElementById("question").innerHTML = questionData.results[i].question;
     document.getElementById("correctAnswer").innerHTML = questionData.results[i].correct_answer;
     document.getElementById("currentQuestionNumber").innerHTML = i + 1;
