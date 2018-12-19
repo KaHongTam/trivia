@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="vraag.css">
     </head>
 	
-    <body>
+    <body onload="generateQuiz()">
         <div class="container-fluid">
             <div class="row text-right">
                 <div class="col-12">
@@ -22,7 +22,7 @@
                     <h6><div id="question">Question</div></h6>
                 </div>
             </div>
-            <div class="row text-center radiobuttons">
+            <div class="row text-center radiobuttons" style="margin-top:5%;">
                 <div class="col-2"></div>
                 <div class="col-8">
                     <form autocomplete="off">
@@ -31,7 +31,7 @@
                             <input type="radio" id="checker1" name="answer" onclick="displayAnswer(this.value)" value="True">
                             True</label>
                         </div>
-                        <div>
+                        <div style="margin-top:10%;">
                             <label for="checker2" style="background-color: #ff0000a6; border-color: #ff0000ea">
                             <input type="radio" id="checker2" name="answer" onclick="displayAnswer(this.value)" value="False">
                             False</label>

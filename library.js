@@ -1,32 +1,45 @@
+function startQuiz() {
+  var questionAmount = document.getElementById("formTotalQuestions").value;
+  var questionDifficulty = document.getElementById("formDifficultyQuestions").value;
+  localStorage.setItem('jsCookieTotal', questionAmount);
+  localStorage.setItem('jsCookieDifficulty', questionDifficulty);
+  window.open("vraag.html","_self");
+}
 var questionData;
 var score = 0;
 
-fetch('https://opentdb.com/api.php?amount=10&category=18&type=boolean')
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
+function generateQuiz(){
+  questionAmount = localStorage.getItem('jsCookieTotal');
+  questionDifficulty = localStorage.getItem('jsCookieDifficulty');
+  console.log("Totaal aantal vragen: " + localStorage.getItem('jsCookieTotal'));
+  console.log("Moeilijkheid: " + localStorage.getItem('jsCookieDifficulty'));
+  fetch('https://opentdb.com/api.php?amount=' + questionAmount + '&category=18&type=boolean')
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
 
-      // Examine the text in the response
-      response.json().then(function(data) {
-        i = 0;
-        questionData = data;
-        document.getElementById("currentQuestionNumber").innerHTML = i + 1;
-        document.getElementById("totalQuestionNumber").innerHTML = questionData.results.length;
-        document.getElementById("question").innerHTML = data.results[i].question;
-        document.getElementById("correctAnswer").innerHTML = data.results[i].correct_answer;
-        question = document.getElementById("question").innerHTML;
-        correct_answer = data.results[i].correct_answer;
-        localStorage.setItem('jsCookieTotal', data.results.length);
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
+        // Examine the text in the response
+        response.json().then(function(data) {
+          i = 0;
+          questionData = data;
+          document.getElementById("currentQuestionNumber").innerHTML = i + 1;
+          document.getElementById("totalQuestionNumber").innerHTML = questionData.results.length;
+          document.getElementById("question").innerHTML = data.results[i].question;
+          document.getElementById("correctAnswer").innerHTML = data.results[i].correct_answer;
+          question = document.getElementById("question").innerHTML;
+          correct_answer = data.results[i].correct_answer;
+          localStorage.setItem('jsCookieTotal', data.results.length);
+        });
+      }
+    )
+    .catch(function(err) {
+      console.log('Fetch Error :-S', err);
+    });
+  }
 
 function displayAnswer(answer) {
   $("#finalAnswer").show();
