@@ -67,9 +67,14 @@ function checkAnswer() {
     if (checker == document.getElementById("correctAnswer").innerHTML) {
       score++;
       document.getElementById("showAnswer").innerHTML = "You answered correctly, congratulations!";
-    }
+      correctSound = document.getElementById("myAudioCorrect");
+      correctSound.play();
+}
+
     else {
       document.getElementById("showAnswer").innerHTML = "Sorry, wrong answer!";
+      wrongSound = document.getElementById("myAudioWrong");
+      wrongSound.play();
     }
     $("input[type=radio]").attr('disabled', true);
     $("#submitButton").hide();
@@ -106,11 +111,9 @@ function scorePage() {
   var totalQuestions = localStorage.getItem('jsCookieTotal');
   var totalTime = localStorage.getItem('jsCookieTimer');
   percentageScore = (displayScore/totalQuestions)*100;
-  console.log("displayScore = ", displayScore);
-  console.log("total amount of questions = ", totalQuestions);
   document.getElementById("score").innerHTML = displayScore;
   document.getElementById("totalQuestions").innerHTML = totalQuestions;
-  document.getElementById("percentage").innerHTML = percentageScore;
+  document.getElementById("percentage").innerHTML = percentageScore.toFixed(1);
   document.getElementById("timeUsed").innerHTML = totalTime;
   displayQuote(percentageScore);
 }
@@ -120,27 +123,26 @@ function openScoreBoard() {
 }
 
 function displayQuote(percentage1) {
-  console.log (percentage1);
+  percentage1 = percentage1.toFixed(1);
   if (percentage1 == 0) {
     document.getElementById("displayQuote").innerHTML = "Wow... 0%, how do you even do that...";
   }
   else if ( percentage1 > 0 && percentage1 <= 20 ) {
-    document.getElementById("displayQuote").innerHTML = "Between 1% and 20%, you really should go outside.";
+    document.getElementById("displayQuote").innerHTML = percentage1 + "%, you really should go outside.";
   }
   else if ( percentage1 > 20 && percentage1 <= 40 ) {
-    document.getElementById("displayQuote").innerHTML = "You scored between 21% and 40%, you failed the test. ";
+    document.getElementById("displayQuote").innerHTML = "You scored " + percentage1 + "%, you failed the test miserably.";
   }
-  else if ( percentage1 > 40 && percentage1 <= 60 ) {
-    document.getElementById("displayQuote").innerHTML = "Hm.. between 41% and 60%, you're almost there, keep trying!";
+  else if ( percentage1 > 40 && percentage1 < 60 ) {
+    document.getElementById("displayQuote").innerHTML = "Hm.. " + percentage1 + "%, you're almost there, keep trying!";
   }
-  else if ( percentage1 > 60 && percentage1 <= 80 ) {
+  else if ( percentage1 >= 60 && percentage1 < 80 ) {
     document.getElementById("displayQuote").innerHTML = percentage1 + "%, your average Joe.";
   }
-  else if ( percentage1 > 80 && percentage1 < 100 ) {
-    document.getElementById("displayQuote").innerHTML = "It's between 81% and 100% now, almost Einstein level. ";
+  else if ( percentage1 >= 80 && percentage1 < 100 ) {
+    document.getElementById("displayQuote").innerHTML = "It's " + percentage1 + "% now, almost Einstein level. ";
   }
   else if (percentage1 == 100) {
     document.getElementById("displayQuote").innerHTML = "100%.. You really are a nerd!";
   }
 }
-  
