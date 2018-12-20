@@ -45,12 +45,20 @@ function generateQuiz(){
 
     function myTimer() {
         timer = timer + 0.1;
-        console.log (timer);
     }
   }
 
 function displayAnswer(answer) {
   $("#finalAnswer").show();
+  if (answer == 'True') {
+    console.log(answer);
+    document.getElementById('checker1Label').style.border = 'thick solid #02b302';
+    document.getElementById('checker2Label').style.border = 'solid #c20000ea';
+  }
+  else if (answer == 'False') {
+    document.getElementById('checker2Label').style.border = 'thick solid #ff0303';
+    document.getElementById('checker1Label').style.border = 'solid #007f00a6';
+  }
   $("#noAnswer").hide();
   $("#submitButton").prop('disabled', false);
   document.getElementById("result").innerHTML = answer;
