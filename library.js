@@ -1,3 +1,16 @@
+//make sure sw are supported
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('sw_cached_site.js')
+      .then(reg => console.log('Service Worker: Registered'))
+      .catch(err => console.log(`Service Worker: Error: ${err}`));
+  });
+}
+
+var questionData;
+var score = 0;
+
 function startQuiz() {
   var questionAmount = document.getElementById("formTotalQuestions").value;
   var questionDifficulty = document.getElementById("formDifficultyQuestions").value;
@@ -5,8 +18,6 @@ function startQuiz() {
   localStorage.setItem('jsCookieDifficulty', questionDifficulty);
   window.open("vraag.html","_self");
 }
-var questionData;
-var score = 0;
 
 function generateQuiz(){
   questionAmount = localStorage.getItem('jsCookieTotal');
@@ -40,11 +51,12 @@ function generateQuiz(){
       console.log('Fetch Error :-S', err);
     });
 
-    var myVar = setInterval(myTimer, 100);
+    var myVar = setInterval(myTimer, 1000);
     timer = 0;
 
     function myTimer() {
-        timer = timer + 0.1;
+        timer = timer + 1;
+        console.log(timer);
     }
   }
 
@@ -168,8 +180,3 @@ function displayQuote(percentage1) {
     quizCompleted100.play();
   }
 }
-
-
-
-
-// 

@@ -8,42 +8,67 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<body>
-    <style>
-        button {
-            animation-name: pulse;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-        }
-        @keyframes pulse {
-            0% {
-                -moz-box-shadow: 0 0 0 0 #cca92c66;
-                box-shadow: 0 0 0 0 #cca92c66;
-            }
-            70% {
-                -moz-box-shadow: 0 0 0 10px #cca92c00;
-                box-shadow: 0 0 0 10px #cca92c;
-            }
-            100% {
-                -moz-box-shadow: 0 0 0 0 #cca92c00;
-                box-shadow: 0 0 0 0 #cca92c00;
-            }
-        }
-    </style>
-
+<body onload="myTimer1()">
         <p>A script on this page starts this clock:</p>
         
-        <p id="demo"></p>
+        <p id="demo" style='font-size: 20px;'>0</p>
         
         <script>
-        var myVar = setInterval(myTimer, 1000);
-        i = 0;
-
-        function myTimer() {
-            i++;
-            document.getElementById("demo").innerHTML = i;
-        }
-        </script>
+            timer1 = -1;
+            var myVar1 = setInterval(myTimer1, 1000);
+            function myTimer1() {
+                timer1++;
+                document.getElementById('demo').innerHTML = timer1;
+                console.log(timer1);
+                if (timer1 == 7) {
+                    console.log("nummertje 7")
+                }
+                else if (timer1 == 8) {
+                    console.log("nummertje 8")
+                }
+                else if (timer1 == 9) {
+                    console.log("nummertje 9")
+                }
+                else if (timer1 == 10) {
+                    console.log("nummertje 10")
+                    myVar1 = clearInterval(myVar1);
+                    document.getElementById('demo').innerHTML = "TIMER STOPPED";
+                }
+            }
+  </script>
         
-        </body>
+        </bod>
 </html>
+
+
+<script>
+teller = 0 // aangemaakt op het moment dat je op pagina2.php zit
+function nieuwPlaatje() { // functie nieuwPlaatje wordt pas uitgevoerd op het moment dat je alertbox GOED zegt
+    teller++;
+}
+//wanneer je op de knop stoppen drukt, dan
+
+
+
+</script>
+
+
+<!-- TOEVOEGEN AAN INDEX.HTML
+<div class="row">
+        <div class="col-6 text-left">
+            Timer: <span id="displayTenSeconds"></span>
+        </div>
+        <div class="col-6 text-right"> -->
+
+
+                <!-- <script>
+                        teller = 0 // aangemaakt op het moment dat je op pagina2.php zit
+                        function nieuwPlaatje() { // functie nieuwPlaatje wordt pas uitgevoerd op het moment dat je alertbox GOED zegt
+                            teller++;
+                        }
+                        //wanneer je op de knop stoppen drukt, dan function weergevenScore uitvoeren
+                        
+                        function weergevenScore() {
+                            document.getElementById('idVanScore').innerHTML = teller;
+                        }
+                        </script> -->
