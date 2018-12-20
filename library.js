@@ -110,7 +110,7 @@ function scorePage() {
   var displayScore = localStorage.getItem('jsCookieScore');
   var totalQuestions = localStorage.getItem('jsCookieTotal');
   var totalTime = localStorage.getItem('jsCookieTimer');
-  percentageScore = (displayScore/totalQuestions)*100;
+    percentageScore = (displayScore/totalQuestions)*100;
   document.getElementById("score").innerHTML = displayScore;
   document.getElementById("totalQuestions").innerHTML = totalQuestions;
   document.getElementById("percentage").innerHTML = percentageScore.toFixed(1);
@@ -126,23 +126,30 @@ function displayQuote(percentage1) {
   percentage1 = percentage1.toFixed(1);
   if (percentage1 == 0) {
     document.getElementById("displayQuote").innerHTML = "Wow... 0%, how do you even do that...";
+    quizFailed.play();
   }
   else if ( percentage1 > 0 && percentage1 <= 20 ) {
     document.getElementById("displayQuote").innerHTML = percentage1 + "%, you really should go outside.";
+    quizFailed.play();
   }
   else if ( percentage1 > 20 && percentage1 <= 40 ) {
     document.getElementById("displayQuote").innerHTML = "You scored " + percentage1 + "%, you failed the test miserably.";
+    quizFailed40.play();
   }
   else if ( percentage1 > 40 && percentage1 < 60 ) {
     document.getElementById("displayQuote").innerHTML = "Hm.. " + percentage1 + "%, you're almost there, keep trying!";
+    quizFailed40.play();
   }
   else if ( percentage1 >= 60 && percentage1 < 80 ) {
     document.getElementById("displayQuote").innerHTML = percentage1 + "%, your average Joe.";
+    quizCompleted.play();
   }
   else if ( percentage1 >= 80 && percentage1 < 100 ) {
     document.getElementById("displayQuote").innerHTML = "It's " + percentage1 + "% now, almost Einstein level. ";
+    quizCompleted.play();
   }
   else if (percentage1 == 100) {
     document.getElementById("displayQuote").innerHTML = "100%.. You really are a nerd!";
+    quizCompleted100.play();
   }
 }
