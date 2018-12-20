@@ -49,6 +49,7 @@ function generateQuiz(){
   }
 
 function displayAnswer(answer) {
+  document.getElementById('submitButton').style.animation = 'pulse 1s infinite';
   $("#finalAnswer").show();
   if (answer == 'True') {
     console.log(answer);
@@ -65,10 +66,10 @@ function displayAnswer(answer) {
 }
 
 function checkAnswer() {
-  if (document.getElementById("checker1").checked == false &&  document.getElementById("checker2").checked == false) {
+  if (document.getElementById('checker1').checked == false &&  document.getElementById("checker2").checked == false) {
     $("#noAnswer").show();
     $("#submitButton").prop('disabled', true);
-  }
+    }
   else {
     var checker = document.getElementById("result").innerHTML;
     $("#showAnswer").show();
@@ -77,8 +78,7 @@ function checkAnswer() {
       document.getElementById("showAnswer").innerHTML = "You answered correctly, congratulations!";
       correctSound = document.getElementById("myAudioCorrect");
       correctSound.play();
-}
-
+    }
     else {
       document.getElementById("showAnswer").innerHTML = "Sorry, wrong answer!";
       wrongSound = document.getElementById("myAudioWrong");
@@ -111,6 +111,9 @@ function nextQuestion() {
     $("#showAnswer").hide();
     document.getElementById("checker1").checked = false;
     document.getElementById("checker2").checked = false;
+    document.getElementById('checker1Label').style.border = 'solid #007f00a6';
+    document.getElementById('checker2Label').style.border = 'solid #c20000ea';
+    document.getElementById('submitButton').style.animation = 'none';
     $("input[type=radio]").attr('disabled', false);
   }
 
@@ -161,3 +164,8 @@ function displayQuote(percentage1) {
     quizCompleted100.play();
   }
 }
+
+
+
+
+// 

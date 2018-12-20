@@ -43,3 +43,23 @@ button {
     background-color: cornflowerblue;
 }
 
+#submitButton {
+    /* animation-name: pulse; */
+    /* animation-duration: 1s; */
+    /* animation-iteration-count: infinite; */
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 #cca92c66;
+        box-shadow: 0 0 0 0 #cca92c66;
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px #cca92c00;
+        box-shadow: 0 0 0 10px #cca92cab;
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 #cca92c00;
+        box-shadow: 0 0 0 0 #cca92c00;
+    }
+}
+
