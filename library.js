@@ -137,10 +137,12 @@ function displayQuote(percentage1) {
   percentage1 = percentage1.toFixed(1);
   if (percentage1 == 0) {
     document.getElementById("displayQuote").innerHTML = "Wow... 0%, how do you even do that...";
+    document.getElementById("percentage").style.animationName = "pulseletterfail";
     quizFailed.play();
   }
   else if ( percentage1 > 0 && percentage1 <= 20 ) {
     document.getElementById("displayQuote").innerHTML = percentage1 + "%, you really should go outside.";
+    document.getElementById("percentage").style.animationName = "pulseletterfail";
     quizFailed.play();
   }
   else if ( percentage1 > 20 && percentage1 <= 40 ) {
@@ -157,10 +159,12 @@ function displayQuote(percentage1) {
   }
   else if ( percentage1 >= 80 && percentage1 < 100 ) {
     document.getElementById("displayQuote").innerHTML = "It's " + percentage1 + "% now, almost Einstein level. ";
+    document.getElementById("percentage").style.animationName = "pulselettergood";
     quizCompleted.play();
   }
   else if (percentage1 == 100) {
     document.getElementById("displayQuote").innerHTML = "100%.. You really are a nerd!";
+    document.getElementById("percentage").style.animationName = "pulselettergood";
     quizCompleted100.play();
   }
 }

@@ -63,3 +63,45 @@ button {
     }
 }
 
+
+#percentage {
+    animation: none 1s infinite;
+}
+
+@keyframes pulseletterfail {
+    0% {
+        color: #ff1100;
+        opacity: 1;
+        text-shadow: -2px 0 #ff1100, 0 2px #ff1100, 2px 0 #ff1100, 0 -2px #ff1100;
+    }
+    50% {
+        color: #ff1100;
+        opacity: 0.4;
+        text-shadow: none;
+        
+    }
+    100% {
+        color: #ff1100;
+        opacity: 1;
+        text-shadow: -2px 0 #ff1100, 0 2px #ff1100, 2px 0 #ff1100, 0 -2px #ff1100;
+    }
+}
+
+@keyframes pulselettergood {
+    0% {
+        color: #FFD700;
+        opacity: 1;
+        text-shadow: -2px 0 #FFD700, 0 2px #FFD700, 2px 0 #FFD700, 0 -2px #FFD700;
+    }
+    50% {
+        color: #FFD700;
+        opacity: 0.4;
+        text-shadow: none;
+        
+    }
+    100% {
+        color: #FFD700;
+        opacity: 1;
+        text-shadow: -2px 0 #FFD700, 0 2px #FFD700, 2px 0 #FFD700, 0 -2px yellow;
+    }
+}
