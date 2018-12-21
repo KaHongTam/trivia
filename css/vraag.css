@@ -3,7 +3,7 @@
 }
 
 .container-fluid {
-    background-color: #333333;
+    background-image: linear-gradient(to bottom right, #333333, #968f95, #333333);
     height: 100vh;
     color: white;
 }
