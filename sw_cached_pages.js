@@ -1,7 +1,6 @@
 const cacheName ='v1';
 
 const cacheAssets = [
-    'icoon_trivika.png',
     'index.css',
     'index.html',
     'library.js',
@@ -13,7 +12,7 @@ const cacheAssets = [
 ];
 
 // Call Install Event
-self.addEventListener('install', (e) => {
+self.addEventListener('install', e => {
     console.log('Service Worker: Installed');
 
     e.waitUntil(
@@ -28,7 +27,7 @@ self.addEventListener('install', (e) => {
 });
 
 //Call Activate Event
-self.addEventListener('activate', (e) => {
+self.addEventListener('activate', e => {
     console.log('Service Worker: Activated');
     // Remove unwanted caches
     e.waitUntil(

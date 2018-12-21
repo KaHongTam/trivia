@@ -1,12 +1,12 @@
-const cacheName ='v3';
+const cacheName ='v2';
 
 // Call Install Event
-self.addEventListener('install', (e) => {
+self.addEventListener('install', e => {
     console.log('Service Worker: Installed');
 });
 
 //Call Activate Event
-self.addEventListener('activate', (e) => {
+self.addEventListener('activate', e => {
     console.log('Service Worker: Activated');
     // Remove unwanted caches
     e.waitUntil(
@@ -36,7 +36,7 @@ self.addEventListener('fetch', e => {
             .open(cacheName)
             .then(cache => {
                 // Add response to cache
-                cache.put(e.resquest, resClone);
+                cache.put(e.request, resClone);
             });
             return res;
         }).catch(err => caches.match(e.request).then(res => res))
