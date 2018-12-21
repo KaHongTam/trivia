@@ -56,7 +56,6 @@ function generateQuiz(){
 
     function myTimer() {
         timer = timer + 1;
-        console.log(timer);
     }
   }
 
@@ -64,7 +63,6 @@ function displayAnswer(answer) {
   document.getElementById('submitButton').style.animation = 'pulse 1s infinite';
   $("#finalAnswer").show();
   if (answer == 'True') {
-    console.log(answer);
     document.getElementById('checker1Label').style.border = 'thick solid #02b302';
     document.getElementById('checker2Label').style.border = 'solid #c20000ea';
   }
@@ -106,7 +104,7 @@ function checkAnswer() {
       endTime = timer.toFixed(1);
       localStorage.setItem('jsCookieScore', score);
       localStorage.setItem('jsCookieTimer', endTime);
-      console.log("total time used=" + endTime);
+      console.log("total time used= " + endTime);
     }
   }
 }
