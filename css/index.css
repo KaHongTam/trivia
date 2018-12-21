@@ -12,10 +12,12 @@
 }
 
 button {
+    color: white;
     margin-top: 15px;
     margin-bottom: 15px;
     height: 100px;
     width: 100px;
     border-radius: 50%!important;
-    background-color: cornflowerblue;
+    border: 1px solid grey!important;
+    background-image: linear-gradient(#6495ed, #333333);
 }
